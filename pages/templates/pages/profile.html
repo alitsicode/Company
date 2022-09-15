@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+    <div class="py-3"></div>
+    <div class="container">
+        <form enctype='multipart/form-date' action="" method='POST'>
+            {% csrf_token %}
+            <div style='border:2px black solid;' class="row py-3">
+                <div class="col-md-6">
+                    {{form.first_name|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.last_name|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.username|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.email|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.age|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.date_joined|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.avatar|as_crispy_field}}
+                </div>
+                
+                <div class="col-md-6">
+                    {{form.is_staff|as_crispy_field}}
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type='submit' class='btn btn-primary'>Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

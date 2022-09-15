@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'information',
+    #third prty packages
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+LOGIN_URL = 'account_login'
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -125,3 +130,19 @@ STATICFILES_DIRS=[str(BASE_DIR.joinpath('static'))]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL='accounts.Customeuser'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend', 
+]
+SITE_ID = 1
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/login"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+MEDIA_URL='/media/'
+MEDIA_ROOT=str(BASE_DIR.joinpath('media'))
